@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lang Dev - Jasa Pembuatan Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at top right, rgba(37,99,235,0.25), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(59,130,246,0.15), transparent 30%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 25px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,#2563eb,#38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 800;
+      box-shadow: 0 0 25px rgba(37,99,235,0.5);
+    }
+
+    .logo h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #3b82f6;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      align-items: center;
+      gap: 40px;
+      min-height: 80vh;
+    }
+
+    .hero-text h2 {
+      font-size: 72px;
+      line-height: 1;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h2 span {
+      color: #2563eb;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg,#2563eb,#3b82f6);
+      color: white;
+      box-shadow: 0 0 25px rgba(37,99,235,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+    }
+
+    .btn-secondary {
+      border: 2px solid #2563eb;
+      color: white;
+      background: transparent;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .mockup {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 0 50px rgba(37,99,235,0.3);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .mockup-top {
+      padding: 15px;
+      background: #0f172a;
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #334155;
+    }
+
+    .mockup-screen {
+      padding: 35px;
+    }
+
+    .screen-title {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .screen-title span {
+      color: #3b82f6;
+    }
+
+    .screen-text {
+      color: #94a3b8;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .screen-btn {
+      background: linear-gradient(135deg,#2563eb,#3b82f6);
+      padding: 12px 20px;
+      display: inline-block;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .features {
+      margin-top: 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 30px;
+      border-radius: 24px;
+      transition: 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: #2563eb;
+      box-shadow: 0 0 25px rgba(37,99,235,0.2);
+    }
+
+    .feature-icon {
+      width: 65px;
+      height: 65px;
+      border-radius: 18px;
+      background: linear-gradient(135deg,#2563eb,#38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .feature-card p {
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+
+    .preview-section {
+      margin-top: 120px;
+    }
+
+    .preview-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .preview-title h2 {
+      font-size: 52px;
+      margin-bottom: 15px;
+    }
+
+    .preview-title span {
+      color: #3b82f6;
+    }
+
+    .preview-title p {
+      color: #94a3b8;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 30px;
+    }
+
+    .preview-card {
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .preview-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(37,99,235,0.2);
+      border-color: #2563eb;
+    }
+
+    .preview-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preview-content {
+      padding: 25px;
+    }
+
+    .preview-content h3 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .preview-content p {
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+
+    .pricing {
+      margin-top: 120px;
+      text-align: center;
+    }
+
+    .pricing h2 {
+      font-size: 52px;
+      margin-bottom: 20px;
+    }
+
+    .pricing span {
+      color: #3b82f6;
+    }
+
+    .price-box {
+      margin-top: 40px;
+      background: linear-gradient(135deg,#0f172a,#111827);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 30px;
+      padding: 50px;
+      max-width: 700px;
+      margin-inline: auto;
+      box-shadow: 0 0 40px rgba(37,99,235,0.2);
+    }
+
+    .price {
+      font-size: 72px;
+      font-weight: 800;
+      color: #3b82f6;
+      margin: 20px 0;
+    }
+
+    .price-box p {
+      color: #94a3b8;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .footer {
+      margin-top: 120px;
+      padding: 30px 0;
+      text-align: center;
+      color: #64748b;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media(max-width:768px) {
+      .hero-text h2 {
+        font-size: 52px;
+      }
+
+      .screen-title {
+        font-size: 30px;
+      }
+
+      .pricing h2 {
+        font-size: 40px;
+      }
+
+      .price {
+        font-size: 56px;
+      }
+    }
+  </style></head>
+<body>  <div class="container"><nav class="navbar">
+  <div class="logo">
+    <div class="logo-box">💻</div>
+    <h1>Lang <span>Dev</span></h1>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>JASA<br><span>PEMBUATAN</span><br>WEBSITE</h2>
+
+    <p>
+      Website modern, profesional, dan responsive untuk bisnis,
+      toko online, portfolio, hingga landing page.
+    </p>
+
+    <div class="btn-group">
+      <a href="https://wa.me/6283171682087" class="btn btn-primary">Order Sekarang</a>
+      <a href="#fitur" class="btn btn-secondary">Lihat Fitur</a>
+      <a href="#preview" class="btn btn-secondary">Lihat Preview</a>
+            <a href="#pricing" class="btn btn-secondary">Lihat Price</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="mockup">
+      <div class="mockup-top">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div class="mockup-screen">
+        <div class="screen-title">We Build <span>Modern Websites</span></div>
+        <div class="screen-text">
+          Lang Dev membantu bisnis tampil lebih profesional dengan desain modern dan performa cepat.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="fitur">
+
+  <div class="feature-card">
+    <div class="feature-icon">⚡</div>
+    <h3>Loading Cepat</h3>
+    <p>Website dioptimalkan agar cepat dibuka di semua perangkat.</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">📱</div>
+    <h3>Responsive</h3>
+    <p>Tampilan otomatis menyesuaikan HP, tablet, dan laptop.</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">🔒</div>
+    <h3>Aman</h3>
+    <p>Website aman dan profesional untuk meningkatkan kepercayaan client.</p>
+  </div>
+
+  <div class="feature-card">
+    <div class="feature-icon">🚀</div>
+    <h3>Modern UI</h3>
+    <p>Desain futuristik dan elegan agar bisnis terlihat premium.</p>
+  </div>
+
+</section>
+
+<section class="preview-section" id="preview">
+  <div class="preview-title">
+    <h2>Preview <span>Website</span></h2>
+    <p>Lihat beberapa contoh tampilan website modern dari Lang Dev.</p>
+  </div>
+
+<div class="preview-grid">
+
+    <div class="preview-card">
+      <img src="https://drive.google.com/file/d/1oq4-21XS5LDF9fX0_qzZsjGabfFJ8yX8/view?usp=drivesdk" alt="Preview Website">
+      <div class="preview-content">
+        <h3>Website Toko Online</h3>
+        <p>Desain modern dan responsive untuk bisnis online.</p>
+      </div>
+    </div>
+
+    <div class="preview-card">
+      <img src="https://drive.google.com/file/d/193EvGn_TrJkJ0VppDlZWQ9DgteCRCCrz/view?usp=drivesdk" alt="Preview Website">
+      <div class="preview-content">
+        <h3>Landing Page Premium</h3>
+        <p>Tampilan profesional untuk promosi produk atau jasa.</p>
+      </div>
+    </div>
+
+    <div class="preview-card">
+      <img src="https://drive.google.com/file/d/1srvh41dbYOx0OKEKQO9q2oKMq4vMpcpu/view?usp=drivesdk" alt="Preview Website">
+      <div class="preview-content">
+        <h3>Portfolio Website</h3>
+        <p>Cocok untuk personal branding dan profile bisnis.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="pricing" id="pricing"
+  <h2>Harga Mulai <span>150K</span></h2>
+
+  <div class="price-box">
+    <h3>Paket Website Basic</h3>
+    <div class="price">150K</div>
+    <h3>Paket Website Premium</h3>
+    <div class="price">450K</div>
+    <h3>Paket Website Pro</h3>
+    <div class="price">750K</div>
+    <h3>Paket Website Super Pro</h3>
+    <div class="price">1JT</div>
+    <p>
+      Cocok untuk UMKM, toko online kecil, portfolio, dan landing page modern.
+    </p>
+
+    <a href="https://wa.me/6283171682087" class="btn btn-primary">Pesan via WhatsApp</a>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 Lang Dev • We Build Modern Websites
+</footer>
+
+  </div></body>
+</html>
